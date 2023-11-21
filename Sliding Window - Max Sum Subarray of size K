@@ -1,0 +1,15 @@
+https://www.youtube.com/watch?v=e-5r3Ty2Xeg&list=PLX0iyO9CrCF37xH1TjkmlHs5VMA5MWjme&index=19&ab_channel=HimanshuSingal
+Question : https://practice.geeksforgeeks.org/problems/max-sum-subarray-of-size-k5313/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
+class Solution{   
+public:
+    long maximumSumSubarray(int k, vector<int> &arr , int n){
+        long window_sum = 0;
+        for(int i=0 ; i<k ; i++)window_sum+=arr[i];
+        long ans = window_sum;
+        for(int i=k ; i<n ; i++){
+            window_sum += arr[i]-arr[i-k];
+            ans = max(ans,window_sum);
+        }
+        return ans;
+    }
+};
