@@ -1,0 +1,24 @@
+https://www.youtube.com/watch?v=uUXXEgK2Jh8&list=PL_z_8CaSLPWeM8BDJmIYDaoQ5zuwyxnfj&index=4&ab_channel=AdityaVerma
+
+https://practice.geeksforgeeks.org/problems/first-negative-integer-in-every-window-of-size-k3345/1?utm_source=geeksforgeeks&utm_medium=ml_article_practice_tab&utm_campaign=article_practice_tab
+
+vector<long long> printFirstNegativeInteger(long long int arr[],
+                                             long long int n, long long int k) {
+    
+    long long int i=0,j=0;
+    vector<long long int> answer;
+    queue<long long int> window;
+    while(j<n){
+        if(j-i+1 < k){
+            if(arr[j]<0)window.push(j);
+            j+=1;
+        }
+        else{
+            if(arr[j]<0)window.push(j);
+            while(!window.empty()){
+                if(window.front()>=i)break;
+                window.pop();
+            }
+            if(window.size()==0)answer.push_back(0);
+            else answer.push_back(arr[window.front()]);
+    
